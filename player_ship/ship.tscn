@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://beo7p3rvlcxy1" path="res://components/spawner_component.gd" id="7_iekxl"]
 [ext_resource type="PackedScene" uid="uid://cvs6ndcxe8q70" path="res://projectiles/laser.tscn" id="8_6m5c2"]
 [ext_resource type="Script" uid="uid://dsjeequ1x2cg0" path="res://components/scale_component.gd" id="9_le0bn"]
+[ext_resource type="Texture2D" uid="uid://d08ptig3vf58b" path="res://assets/sprites/ship_flame.png" id="10_8ru6t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y3mk2"]
 atlas = ExtResource("1_lyjrp")
@@ -49,11 +50,79 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ru6t"]
+atlas = ExtResource("10_8ru6t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbeao"]
+atlas = ExtResource("10_8ru6t")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a146t"]
+atlas = ExtResource("10_8ru6t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gglps"]
+atlas = ExtResource("10_8ru6t")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lltil"]
+atlas = ExtResource("10_8ru6t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xpe7"]
+atlas = ExtResource("10_8ru6t")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5wi2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ru6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbeao")
+}],
+"loop": 1,
+"name": &"bank_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a146t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gglps")
+}],
+"loop": 1,
+"name": &"bank_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lltil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xpe7")
+}],
+"loop": 1,
+"name": &"center",
+"speed": 10.0
+}]
+
 [node name="Ship" type="Node2D" unique_id=929851448]
 script = ExtResource("1_etvdo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=199779150]
+[node name="Anchor" type="Node2D" parent="." unique_id=2083870059]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor" unique_id=199779150]
 sprite_frames = SubResource("SpriteFrames_pilwl")
+animation = &"center"
+autoplay = "center"
+
+[node name="FlameAnimatedSprite" type="AnimatedSprite2D" parent="Anchor" unique_id=1539740075]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_t5wi2")
 animation = &"center"
 autoplay = "center"
 
@@ -90,5 +159,5 @@ autostart = true
 
 [node name="ScaleComponent" type="Node" parent="." unique_id=1982836058 node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_le0bn")
-sprite = NodePath("../AnimatedSprite2D")
+sprite = NodePath("../Anchor")
 metadata/_custom_type_script = "uid://dsjeequ1x2cg0"
