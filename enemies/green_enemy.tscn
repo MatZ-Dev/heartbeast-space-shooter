@@ -32,6 +32,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b0nf3"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pilwl"]
+radius = 6.0
+
 [node name="GreenEnemy" unique_id=947168423 instance=ExtResource("1_xixw3")]
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1676910821]
@@ -48,3 +54,9 @@ velocity = Vector2(0, 40)
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="3" unique_id=1479180927]
 rect = Rect2(-8, -8, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" parent_id_path=PackedInt32Array(110863721) index="0" unique_id=1459169658]
+shape = SubResource("CircleShape2D_b0nf3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" parent_id_path=PackedInt32Array(338263526) index="0" unique_id=228734008]
+shape = SubResource("CircleShape2D_pilwl")
