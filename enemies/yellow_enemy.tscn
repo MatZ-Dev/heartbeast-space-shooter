@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://c8rgsavyaqcek"]
+
+[ext_resource type="PackedScene" uid="uid://bjfnchdkts4vm" path="res://enemies/enemy.tscn" id="1_rilk2"]
+[ext_resource type="Script" uid="uid://bvsux76ygbse4" path="res://enemies/yellow_enemy.gd" id="2_kcw3k"]
+[ext_resource type="Texture2D" uid="uid://beinxv8mr1cc" path="res://assets/sprites/yellow_enemy.png" id="2_sy5vk"]
+[ext_resource type="Script" uid="uid://bjgtpsuqq6qbh" path="res://components/border_bounce_component.gd" id="4_fg4df"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcw3k"]
+atlas = ExtResource("2_sy5vk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg4df"]
+atlas = ExtResource("2_sy5vk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy5vk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcw3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg4df")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pilwl"]
+size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5wi2"]
+size = Vector2(12, 7)
+
+[node name="YellowEnemy" unique_id=947168423 instance=ExtResource("1_rilk2")]
+script = ExtResource("2_kcw3k")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1676910821]
+sprite_frames = SubResource("SpriteFrames_sy5vk")
+autoplay = "default"
+frame = 1
+frame_progress = 0.98811144
+
+[node name="StatsComponent" parent="." index="1" unique_id=440060764]
+health = 6
+
+[node name="MoveComponent" parent="." index="2" unique_id=99428330]
+velocity = Vector2(0, 10)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3" unique_id=1479180927]
+rect = Rect2(-8, -5, 16, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" parent_id_path=PackedInt32Array(110863721) index="0" unique_id=344703132]
+shape = SubResource("RectangleShape2D_pilwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" parent_id_path=PackedInt32Array(338263526) index="0" unique_id=1376203167]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_t5wi2")
+debug_color = Color(0.9783024, 0, 0.4010299, 0.41960785)
+
+[node name="ScoreComponent" parent="." index="12" unique_id=62606791]
+adjust_amount = 10
+
+[node name="BorderBounceComponent" type="Node" parent="." index="13" unique_id=2114412375 node_paths=PackedStringArray("actor", "move_component")]
+script = ExtResource("4_fg4df")
+actor = NodePath("..")
+move_component = NodePath("../MoveComponent")
+metadata/_custom_type_script = "uid://bjgtpsuqq6qbh"
