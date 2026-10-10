@@ -1,7 +1,6 @@
 class_name Enemy
 extends Node2D
 
-
 @onready var stats_component: StatsComponent = $StatsComponent
 @onready var move_component: MoveComponent = $MoveComponent
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
