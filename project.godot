@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Heartbeast Space Shooter"
-run/main_scene="uid://b5laa14awj6gj"
+run/main_scene="uid://b63ct8jaaliqa"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
