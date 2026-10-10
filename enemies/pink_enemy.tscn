@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://bm7wwj2o3kuyn" path="res://components/move_component.gd" id="4_uw4rh"]
 [ext_resource type="Script" uid="uid://bjgtpsuqq6qbh" path="res://components/border_bounce_component.gd" id="5_mik3f"]
 [ext_resource type="Script" uid="uid://c77w6oxgkqwxk" path="res://components/timed_state_componoent.gd" id="6_67erp"]
+[ext_resource type="Script" uid="uid://c8qbmkwdgm722" path="res://components/state_component.gd" id="7_3uis6"]
+[ext_resource type="Script" uid="uid://beo7p3rvlcxy1" path="res://components/spawner_component.gd" id="8_idvas"]
+[ext_resource type="PackedScene" uid="uid://bfjfrvryuuxpg" path="res://projectiles/pink_enemy_projectile.tscn" id="9_4s7jl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kney"]
 atlas = ExtResource("2_psv4m")
@@ -115,7 +118,18 @@ actor = NodePath("../../..")
 move_component = NodePath("../MoveSideComponent")
 metadata/_custom_type_script = "uid://bjgtpsuqq6qbh"
 
-[node name="PauseState" type="Node" parent="States" index="2" unique_id=2022065456]
+[node name="FireState" type="Node" parent="States" index="2" unique_id=1456624495]
+unique_name_in_owner = true
+script = ExtResource("7_3uis6")
+metadata/_custom_type_script = "uid://c8qbmkwdgm722"
+
+[node name="ProjectileSpawnerComponent" type="Node2D" parent="States/FireState" index="0" unique_id=178602336]
+unique_name_in_owner = true
+script = ExtResource("8_idvas")
+scene = ExtResource("9_4s7jl")
+metadata/_custom_type_script = "uid://beo7p3rvlcxy1"
+
+[node name="PauseState" type="Node" parent="States" index="3" unique_id=2022065456]
 unique_name_in_owner = true
 script = ExtResource("6_67erp")
 metadata/_custom_type_script = "uid://c77w6oxgkqwxk"
