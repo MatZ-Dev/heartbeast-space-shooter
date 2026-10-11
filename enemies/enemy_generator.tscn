@@ -5,12 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://c7r1b3vmw8vfc" path="res://enemies/green_enemy.tscn" id="2_d5nw7"]
 [ext_resource type="PackedScene" uid="uid://c8rgsavyaqcek" path="res://enemies/yellow_enemy.tscn" id="3_m4hnj"]
 [ext_resource type="PackedScene" uid="uid://0njis2lsia21" path="res://enemies/pink_enemy.tscn" id="4_fag5v"]
+[ext_resource type="Resource" uid="uid://cd0n2f7rvnkdc" path="res://game_stats.tres" id="5_rpav0"]
 
 [node name="EnemyGenerator" type="Node2D" unique_id=2008452015]
 script = ExtResource("1_k80ol")
 GreenEnemyScene = ExtResource("2_d5nw7")
 YellowEnemyScene = ExtResource("3_m4hnj")
 PinkEnemyScene = ExtResource("4_fag5v")
+game_stats = ExtResource("5_rpav0")
 
 [node name="SpawnerComponent" type="Node2D" parent="." unique_id=478036889]
 script = ExtResource("1_p85au")
@@ -22,11 +24,13 @@ one_shot = true
 autostart = true
 
 [node name="YellowEnemySpawnTimer" type="Timer" parent="." unique_id=1257239999]
+process_mode = 4
 wait_time = 5.0
 one_shot = true
 autostart = true
 
 [node name="PinkEnemySpawnTimer" type="Timer" parent="." unique_id=1386176703]
+process_mode = 4
 wait_time = 10.0
 one_shot = true
 autostart = true
